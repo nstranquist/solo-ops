@@ -1,0 +1,24 @@
+schema_version: 1
+id: product.solo-ops
+name: Solo Ops
+surface: products
+kind: product
+status: experimental
+persona: One-person local service businesses and operators helping them.
+jtbd: Track inquiries and generate policy packs offline without a SaaS tenant.
+pricing: Free local CLI MVP; commercialization deferred.
+launch: built
+license: MIT
+tags:
+    - local-business
+    - ops
+    - go
+    - cli
+    - offline-first
+checks:
+    - name: test
+      command: [go, test, ./...]
+    - name: build
+      command: [go, build, -o, /dev/null, ./cmd/solo-ops]
+description: Offline inquiry CRM + policy pack generator for solo service businesses.
+portfolio_manifest: portfolio/manifest.yaml
