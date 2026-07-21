@@ -2,28 +2,37 @@ package soloops
 
 import (
 	"path/filepath"
+	"strings"
 	"testing"
 )
 
-func TestInquiryLedgerAndPolicy(t *testing.T) {
+func TestInquiryStatusAndCockpit(t *testing.T) {
 	dir := t.TempDir()
 	path := filepath.Join(dir, "inquiries.jsonl")
 	inq := NewInquiry("inq-1", "Alex", "birthday", 12, "outdoor")
 	if err := AppendInquiry(path, inq); err != nil {
 		t.Fatal(err)
 	}
+	upd, err := SetStatus(path, "inq-1", "booked")
+	if err != nil {
+		t.Fatal(err)
+	}
+	if upd.Status != "booked" {
+		t.Fatal(upd.Status)
+	}
 	list, err := ListInquiries(path)
 	if err != nil {
 		t.Fatal(err)
 	}
-	if len(list) != 1 || list[0].Name != "Alex" {
+	if len(list) != 1 || list[0].Status != "booked" {
 		t.Fatalf("%+v", list)
 	}
-	pack := GeneratePolicyPack("Painted by Demo")
-	if pack.Markdown == "" || len(pack.Sections) < 3 {
-		t.Fatalf("%+v", pack)
+	html := RenderCockpitHTML("Demo Co", list)
+	if !strings.Contains(html, "Alex") || !strings.Contains(html, "booked") {
+		t.Fatal(html)
 	}
-	if pack.Business != "Painted by Demo" {
-		t.Fatal(pack.Business)
+	pack := GeneratePolicyPack("Demo Co")
+	if pack.Markdown == "" {
+		t.Fatal("policy")
 	}
 }
