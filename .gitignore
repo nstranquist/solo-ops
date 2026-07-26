@@ -2,3 +2,8 @@
 *.exe
 *.test
 .DS_Store
+bin/
+*.exe
+*.test
+.DS_Store
+.leak-probe.md.bak
