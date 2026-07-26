@@ -29,10 +29,9 @@ command, and the leak scan plus its self-test.
 
 ## Release scan
 
-CI enforces the generic classes via `make leak-scan`. A private,
-project-specific banned-fragment list is maintained outside this repository and
-applied before publishing. **That list is deliberately not committed here** — a
-scan that embeds the strings it forbids publishes them.
+CI enforces the generic classes via `make leak-scan`. A second, private
+denylist is applied before publishing and is **deliberately not committed
+here**: a scan that embeds the strings it forbids would publish them.
 
 ## Boundary
 

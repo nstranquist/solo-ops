@@ -6,7 +6,7 @@ kind: product
 status: experimental
 persona: One-person local service businesses and operators helping them.
 jtbd: Track inquiries and generate policy packs offline without a SaaS tenant.
-pricing: Free local CLI MVP; commercialization deferred.
+pricing: Free and open source under MIT.
 launch: built
 launch_blocker: No Square/Calendar integrations; local HTML cockpit + inquiry status MVP is code-complete + tested.
 license: MIT

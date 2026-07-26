@@ -11,8 +11,7 @@ make publish-ready  # run before tagging
 
 1. **`make smoke` must exercise every command the README documents.** The unit
    tests cover the internal packages and never execute the CLI, so a documented
-   command that smoke does not run is undefended — that is precisely how a
-   sibling project shipped a README naming four verbs that did not exist.
+   command that smoke does not run is undefended against drift.
 2. **Keep behaviour deterministic.** No network, no clock dependence, and no LLM
    in any path that decides pass/fail.
 3. **Fixtures stay synthetic.** Nothing under `testdata/` may contain real
