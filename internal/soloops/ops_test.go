@@ -28,8 +28,17 @@ func TestInquiryStatusAndCockpit(t *testing.T) {
 		t.Fatalf("%+v", list)
 	}
 	html := RenderCockpitHTML("Demo Co", list)
-	if !strings.Contains(html, "Alex") || !strings.Contains(html, "booked") {
-		t.Fatal(html)
+	for _, want := range []string{"Alex", "booked", "Demo Co", "inquiries", "1"} {
+		if !strings.Contains(html, want) {
+			t.Fatalf("cockpit missing %q\n%s", want, html)
+		}
+	}
+	escaped := RenderCockpitHTML("<script>x</script>", nil)
+	if strings.Contains(escaped, "<script>x</script>") {
+		t.Fatal("business name was not escaped")
+	}
+	if !strings.Contains(escaped, "No inquiries in this ledger.") {
+		t.Fatal("empty ledger should say so")
 	}
 	pack := GeneratePolicyPack("Demo Co")
 	if pack.Markdown == "" {

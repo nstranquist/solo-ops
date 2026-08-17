@@ -15,6 +15,14 @@ go install github.com/nstranquist/solo-ops/cmd/solo-ops@latest
 
 Requires Go 1.26+.
 
+## Showcase
+
+![Solo Ops offline cockpit with fictional inquiries](portfolio/assets/cockpit.png)
+
+The screenshot is the read-only cockpit rendered from
+`testdata/showcase.jsonl`. The names and events are fictional. Extra
+shots, if any, live in [screenshots/](screenshots/).
+
 ## Usage
 
 Track inquiries:
@@ -35,7 +43,7 @@ solo-ops policy-pack --business "Painted by Demo"
 Render a read-only local cockpit:
 
 ```sh
-solo-ops cockpit-html --ledger inquiries.jsonl --out cockpit.html
+solo-ops cockpit-html --ledger testdata/showcase.jsonl --business "Painted by Demo" --out cockpit.html
 ```
 
 Or serve it on loopback:

@@ -2,7 +2,11 @@ schema_version: 1
 product_id: product.solo-ops
 visibility: internal
 reviewed: true
-assets: []
+assets:
+    - path: portfolio/assets/cockpit.png
+      kind: screenshot
+      alt: Solo Ops offline cockpit with fictional inquiries
+      caption: Read-only cockpit rendered from testdata/showcase.jsonl. Names and events are fictional.
 case_study:
     enabled: false
     evidence: []

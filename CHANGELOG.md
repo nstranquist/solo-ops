@@ -2,6 +2,14 @@
 
 Offline inquiry CRM plus policy pack and a local read-only HTML cockpit.
 
+## Unreleased
+
+### Changed
+
+- The read-only cockpit is now a summary-and-card layout (status counts,
+  pills, dates) instead of a bare HTML table. Public screenshots use the
+  fictional `testdata/showcase.jsonl` ledger.
+
 ## [0.1.0] — 2026-07-25
 
 First public release.

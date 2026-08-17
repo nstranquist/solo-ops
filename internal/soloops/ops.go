@@ -127,30 +127,3 @@ func GeneratePolicyPack(business string) PolicyPack {
 	}
 	return PolicyPack{Business: business, Sections: sections, Markdown: b.String()}
 }
-
-// RenderCockpitHTML builds a static HTML view of inquiries.
-func RenderCockpitHTML(business string, list []Inquiry) string {
-	var b strings.Builder
-	b.WriteString("<!doctype html><meta charset=utf-8><title>Solo Ops</title>")
-	b.WriteString("<style>body{font-family:system-ui;margin:2rem}table{border-collapse:collapse}td,th{border:1px solid #ccc;padding:.4rem .6rem}</style>")
-	b.WriteString("<h1>Solo Ops — " + htmlEsc(business) + "</h1>")
-	b.WriteString("<p>Offline inquiry cockpit (read-only HTML).</p>")
-	b.WriteString("<table><tr><th>id</th><th>name</th><th>event</th><th>guests</th><th>status</th><th>notes</th></tr>")
-	for _, inq := range list {
-		b.WriteString("<tr>")
-		b.WriteString("<td>" + htmlEsc(inq.ID) + "</td>")
-		b.WriteString("<td>" + htmlEsc(inq.Name) + "</td>")
-		b.WriteString("<td>" + htmlEsc(inq.Event) + "</td>")
-		b.WriteString(fmt.Sprintf("<td>%d</td>", inq.Guests))
-		b.WriteString("<td>" + htmlEsc(inq.Status) + "</td>")
-		b.WriteString("<td>" + htmlEsc(inq.Notes) + "</td>")
-		b.WriteString("</tr>")
-	}
-	b.WriteString("</table>")
-	return b.String()
-}
-
-func htmlEsc(s string) string {
-	r := strings.NewReplacer("&", "&amp;", "<", "&lt;", ">", "&gt;", "\"", "&quot;")
-	return r.Replace(s)
-}
