@@ -2,7 +2,7 @@
 
 Offline inquiry CRM plus policy pack and a local read-only HTML cockpit.
 
-## Unreleased
+## [0.2.0] — 2026-11-02
 
 ### Changed
 
